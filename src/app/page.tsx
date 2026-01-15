@@ -67,7 +67,7 @@ export default function Home() {
           },
           {
             opacity: 1,
-            scale: 1,
+            scale: 1.01,
             duration: 1.5,
             ease: "back.out(1.2)",
           },
@@ -242,7 +242,7 @@ export default function Home() {
         {/* Main Logo */}
         <div className="relative w-full max-w-2xl aspect-square flex items-center justify-center">
           <Image
-            src="/logo.png"
+            src="/logo-r.png"
             alt="Schematic Logo Background"
             width={800}
             height={800}
@@ -255,7 +255,7 @@ export default function Home() {
             alt="Schematic Logo Foreground"
             width={800}
             height={800}
-            className="logo-fg-img object-contain absolute w-[75%] h-[75%] top-1/2 left-1/2 -translate-x-[51%] -translate-y-[49%] z-10"
+            className="logo-fg-img object-contain absolute w-[75%] h-[75%] top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] z-10"
             priority
           />
 
