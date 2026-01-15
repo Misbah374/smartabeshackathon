@@ -157,7 +157,6 @@ export default function Home() {
             <path d="M0,0 L0,6 L9,3 z" fill="#165a94" />
           </marker>
         </defs>
-
         {/* Outer Border Box */}
         <rect
           x="5%"
@@ -170,7 +169,6 @@ export default function Home() {
           className="border-line opacity-0"
           style={{ strokeDasharray: 4000, strokeDashoffset: 4000 }}
         />
-
         {/* Top Dimension Line */}
         <line
           x1="5%"
@@ -184,7 +182,6 @@ export default function Home() {
           className="border-line opacity-0"
           style={{ strokeDasharray: 2000, strokeDashoffset: 2000 }}
         />
-
         {/* Left Dimension Line */}
         <line
           x1="8%"
@@ -198,7 +195,6 @@ export default function Home() {
           className="border-line opacity-0"
           style={{ strokeDasharray: 2000, strokeDashoffset: 2000 }}
         />
-
         {/* Bottom Dimension Line */}
         <line
           x1="5%"
@@ -212,7 +208,6 @@ export default function Home() {
           className="border-line opacity-0"
           style={{ strokeDasharray: 2000, strokeDashoffset: 2000 }}
         />
-
         {/* Right Dimension Line (Partial) */}
         <line
           x1="92%"
@@ -224,16 +219,15 @@ export default function Home() {
           className="border-line opacity-0"
           style={{ strokeDasharray: 1000, strokeDashoffset: 1000 }}
         />
-
-        {/* Leader Line for Material */}
-        <path
+        // FUCK U{/* Leader Line for Material */}
+        {/* <path
           d="M300,150 L350,250"
           stroke="#165a94"
           strokeWidth="1"
           fill="none"
           className="border-line opacity-0 md:block hidden"
           style={{ strokeDasharray: 2000, strokeDashoffset: 2000 }}
-        />
+        /> */}
       </svg>
 
       {/* Content Layer */}
