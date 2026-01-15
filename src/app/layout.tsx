@@ -16,8 +16,24 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Smart ABES Hackathon",
-  description:
-    "A hackathon about building projects that work better because of Data Structures and Algorithms.",
+  keywords: [
+    "Smart ABES Hackathon",
+    "Data Structures and Algorithms",
+    "Hackathon",
+  ],
+  icons: {
+    icon: "/logo.png",
+  },
+  metadataBase: new URL("https://smartabeshackathon.tech"),
+  openGraph: {
+    title: "Smart ABES Hackathon",
+    description:
+      "A hackathon about building projects that work better because of Data Structures and Algorithms.",
+    images: ["/logo.png"],
+    siteName: "Smart ABES Hackathon",
+    type: "website",
+    url: "https://smartabeshackathon.tech",
+  },
 };
 
 export default function RootLayout({
