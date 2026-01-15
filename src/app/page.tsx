@@ -43,21 +43,35 @@ export default function Home() {
           stagger: 0.1,
         })
 
-        // 4. Logo "Sketch" (Fade & Scale with a filter maybe? Simple fade for now)
+        // 4. Logo Entrance
         .fromTo(
-          ".main-logo",
+          ".logo-bg-img",
           {
             opacity: 0,
-            scale: 0.9,
+            scale: 0.8,
             filter: "grayscale(100%) contrast(1.2)",
           },
           {
-            opacity: 0.9,
+            opacity: 1,
             scale: 1,
             filter: "grayscale(0%) contrast(1)",
             duration: 1.5,
             ease: "power2.inOut",
           }
+        )
+        .fromTo(
+          ".logo-fg-img",
+          {
+            opacity: 0,
+            scale: 0.5,
+          },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 1.5,
+            ease: "back.out(1.2)",
+          },
+          "<"
         )
 
         // 5. Annotations Typewriter effect
@@ -71,9 +85,8 @@ export default function Home() {
             opacity: 1,
             duration: 1,
           },
-          "-=1"
+          "-=0.5"
         )
-
         .to(
           ".dimension-text",
           {
@@ -82,8 +95,16 @@ export default function Home() {
             stagger: 0.2,
             duration: 0.5,
           },
-          "-=1"
-        );
+          "-=0.5"
+        )
+
+        // 6. Delayed Slow Spin of the Background Logo
+        .to(".logo-bg-img", {
+          rotation: 360,
+          duration: 60,
+          repeat: -1,
+          ease: "none",
+        });
     },
     { scope: containerRef }
   );
@@ -222,10 +243,19 @@ export default function Home() {
         <div className="relative w-full max-w-2xl aspect-square flex items-center justify-center">
           <Image
             src="/logo.png"
-            alt="Schematic Logo"
+            alt="Schematic Logo Background"
             width={800}
             height={800}
-            className="main-logo object-contain drop-shadow-xl"
+            className="logo-bg-img relative z-0 object-contain drop-shadow-xl"
+            priority
+          />
+
+          <Image
+            src="/logo-circle.png"
+            alt="Schematic Logo Foreground"
+            width={800}
+            height={800}
+            className="logo-fg-img object-contain absolute w-[75%] h-[75%] top-1/2 left-1/2 -translate-x-[51%] -translate-y-[49%] z-10"
             priority
           />
 
