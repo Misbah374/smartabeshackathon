@@ -219,7 +219,7 @@ export default function Home() {
           className="border-line opacity-0"
           style={{ strokeDasharray: 1000, strokeDashoffset: 1000 }}
         />
-        // FUCK U{/* Leader Line for Material */}
+        {/* Leader Line for Material */}
         {/* <path
           d="M300,150 L350,250"
           stroke="#165a94"
