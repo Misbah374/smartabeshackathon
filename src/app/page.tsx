@@ -2,6 +2,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -37,7 +38,7 @@ export default function Home() {
             duration: 1.5,
             stagger: 0.2,
           },
-          "-=1"
+          "-=1",
         )
 
         // 3. Arrow Heads pop in
@@ -62,7 +63,7 @@ export default function Home() {
             filter: "grayscale(0%) contrast(1)",
             duration: 1.5,
             ease: "power2.inOut",
-          }
+          },
         )
         .fromTo(
           ".logo-fg-img",
@@ -76,7 +77,7 @@ export default function Home() {
             duration: 1.5,
             ease: "back.out(1.2)",
           },
-          "<"
+          "<",
         )
 
         // 5. Annotations Typewriter
@@ -90,7 +91,7 @@ export default function Home() {
             opacity: 1,
             duration: 1,
           },
-          "-=0.5"
+          "-=0.5",
         )
 
         .to(
@@ -101,7 +102,7 @@ export default function Home() {
             stagger: 0.2,
             duration: 0.5,
           },
-          "-=0.5"
+          "-=0.5",
         )
 
         // 6. Footer / CTA Reveal
@@ -109,7 +110,7 @@ export default function Home() {
           ".footer-element",
           { opacity: 0, y: 20 },
           { opacity: 1, y: 0, stagger: 0.1, duration: 0.8 },
-          "-=0.5"
+          "-=0.5",
         )
 
         // 7. Delayed Slow Spin of the Background Logo
@@ -120,7 +121,7 @@ export default function Home() {
           ease: "none",
         });
     },
-    { scope: containerRef }
+    { scope: containerRef },
   );
 
   return (
@@ -219,15 +220,6 @@ export default function Home() {
           className="border-line opacity-0"
           style={{ strokeDasharray: 1000, strokeDashoffset: 1000 }}
         />
-        {/* Leader Line for Material */}
-        {/* <path
-          d="M300,150 L350,250"
-          stroke="#165a94"
-          strokeWidth="1"
-          fill="none"
-          className="border-line opacity-0 md:block hidden"
-          style={{ strokeDasharray: 2000, strokeDashoffset: 2000 }}
-        /> */}
       </svg>
 
       {/* Content Layer */}
@@ -283,6 +275,14 @@ export default function Home() {
             <div className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-[#165a94]"></div>
             <div className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-[#165a94]"></div>
           </a>
+
+          {/* Judging Criteria Link */}
+          <Link
+            href="/judging-criteria"
+            className="footer-element group relative px-6 py-2 border border-[#165a94] text-[#165a94] font-semibold uppercase tracking-wide hover:bg-[#165a94]/10 hover:border-[#5fb8dc] hover:text-[#5fb8dc] transition-all duration-300"
+          >
+            <span className="relative z-10 text-sm">View Judging Criteria</span>
+          </Link>
         </div>
 
         {/* Social Icons (Bottom Left) */}
