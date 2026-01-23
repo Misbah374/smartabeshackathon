@@ -1,38 +1,43 @@
 /** @format */
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 const CRITERIA = [
-  { subject: "Novelty", fullMark: 100 },
-  { subject: "Articulation", fullMark: 100 },
-  { subject: "Optimization & Depth", fullMark: 100 },
-  { subject: "Methodology", fullMark: 100 },
+  {
+    subject: "Novelty",
+    fullMark: 100,
+    description:
+      "Innovation and originality of the solution. How unique is your approach?",
+  },
+  {
+    subject: "Articulation",
+    fullMark: 100,
+    description:
+      "Clear understanding and articulation of the problem being solved.",
+  },
+  {
+    subject: "Optimization & Depth",
+    fullMark: 100,
+    description:
+      "Technical depth, efficiency, and optimization of the solution.",
+  },
+  {
+    subject: "Methodology",
+    fullMark: 100,
+    description:
+      "Well-structured approach and systematic problem-solving methodology.",
+  },
 ];
 
 export default function JudgingCriteriaPage() {
   const [chartData, setChartData] = useState(
     CRITERIA.map((c) => ({ subject: c.subject, value: 0, fullMark: 100 })),
   );
-  const [chartVisible, setChartVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const chartRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
-  const point1Ref = useRef<HTMLDivElement>(null);
-  const point2Ref = useRef<HTMLDivElement>(null);
-  const point3Ref = useRef<HTMLDivElement>(null);
-  const point4Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current) return;
-
     // Object to hold animated values
     const animatedValues = {
       point1: 0,
@@ -67,74 +72,125 @@ export default function JudgingCriteriaPage() {
       ]);
     };
 
-    // Show chart on scroll
-    ScrollTrigger.create({
-      trigger: titleRef.current,
-      start: "bottom 70%",
-      onEnter: () => setChartVisible(true),
-      onLeaveBack: () => setChartVisible(false),
-    });
+    // Create timeline for sequential animations
+    const tl = gsap.timeline({ delay: 0.5 });
 
-    // Animate Point 1 (Novelty) - tied to scroll
-    gsap.to(animatedValues, {
+    // Animate each point sequentially
+    tl.to(animatedValues, {
       point1: 100,
-      scrollTrigger: {
-        trigger: point1Ref.current,
-        start: "top bottom",
-        end: "bottom center",
-        scrub: 0.5,
-        onUpdate: () => updateChart(),
-      },
-    });
-
-    // Animate Point 2 (Articulation) - starts after point 1
-    gsap.to(animatedValues, {
-      point2: 100,
-      scrollTrigger: {
-        trigger: point2Ref.current,
-        start: "top bottom",
-        end: "bottom center",
-        scrub: 0.5,
-        onUpdate: () => updateChart(),
-      },
-    });
-
-    // Animate Point 3 (Optimization & Depth) - starts after point 2
-    gsap.to(animatedValues, {
-      point3: 100,
-      scrollTrigger: {
-        trigger: point3Ref.current,
-        start: "top bottom",
-        end: "bottom center",
-        scrub: 0.5,
-        onUpdate: () => updateChart(),
-      },
-    });
-
-    // Animate Point 4 (Methodology) - starts after point 3
-    gsap.to(animatedValues, {
-      point4: 100,
-      scrollTrigger: {
-        trigger: point4Ref.current,
-        start: "top bottom",
-        end: "bottom center",
-        scrub: 0.5,
-        onUpdate: () => updateChart(),
-      },
-    });
+      duration: 1.5,
+      ease: "power2.out",
+      onUpdate: updateChart,
+    })
+      .to(
+        animatedValues,
+        {
+          point2: 100,
+          duration: 1.5,
+          ease: "power2.out",
+          onUpdate: updateChart,
+        },
+        "+=0.5",
+      )
+      .to(
+        animatedValues,
+        {
+          point3: 100,
+          duration: 1.5,
+          ease: "power2.out",
+          onUpdate: updateChart,
+        },
+        "+=0.5",
+      )
+      .to(
+        animatedValues,
+        {
+          point4: 100,
+          duration: 1.5,
+          ease: "power2.out",
+          onUpdate: updateChart,
+        },
+        "+=0.5",
+      );
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      tl.kill();
     };
   }, []);
 
   return (
-    <main className="min-h-screen bg-linear-to-b from-slate-950 via-slate-900 to-slate-950">
+    <main className="relative min-h-screen w-full overflow-hidden blueprint-grid blueprint-grid-sub select-none">
+      {/* Texture Overlay */}
+      <div className="absolute inset-0 vignette pointer-events-none z-20" />
+
+      {/* SVG Drawing Layer */}
+      <svg className="absolute inset-0 w-full h-full z-10 pointer-events-none">
+        <defs>
+          <marker
+            id="arrow-start"
+            markerWidth="10"
+            markerHeight="10"
+            refX="1"
+            refY="3"
+            orient="auto"
+            markerUnits="strokeWidth"
+          >
+            <path d="M9,0 L9,6 L0,3 z" fill="#165a94" />
+          </marker>
+          <marker
+            id="arrow-end"
+            markerWidth="10"
+            markerHeight="10"
+            refX="9"
+            refY="3"
+            orient="auto"
+            markerUnits="strokeWidth"
+          >
+            <path d="M0,0 L0,6 L9,3 z" fill="#165a94" />
+          </marker>
+        </defs>
+        {/* Outer Border Box */}
+        <rect
+          x="5%"
+          y="5%"
+          width="90%"
+          height="90%"
+          fill="none"
+          stroke="#165a94"
+          strokeWidth="2"
+          className="opacity-30"
+        />
+        {/* Top Dimension Line */}
+        <line
+          x1="5%"
+          y1="10%"
+          x2="95%"
+          y2="10%"
+          stroke="#165a94"
+          strokeWidth="1"
+          markerStart="url(#arrow-start)"
+          markerEnd="url(#arrow-end)"
+          className="opacity-30"
+        />
+        {/* Left Dimension Line */}
+        <line
+          x1="8%"
+          y1="5%"
+          x2="8%"
+          y2="95%"
+          stroke="#165a94"
+          strokeWidth="1"
+          markerStart="url(#arrow-start)"
+          markerEnd="url(#arrow-end)"
+          className="opacity-30"
+        />
+      </svg>
+
       {/* Back Button */}
       <div className="fixed top-8 left-8 z-50">
         <Link
           href="/"
-          className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors group"
+          className="flex items-center gap-2 text-[#165a94] hover:text-[#5fb8dc] transition-colors group"
         >
           <svg
             className="w-6 h-6 group-hover:-translate-x-1 transition-transform"
@@ -153,37 +209,28 @@ export default function JudgingCriteriaPage() {
         </Link>
       </div>
 
-      <section ref={sectionRef} className="min-h-[300vh] py-20 px-4">
-        <div className="max-w-6xl mx-auto">
+      {/* Content Section */}
+      <section className="relative z-10 min-h-screen flex items-center justify-center py-20 px-4">
+        <div className="max-w-7xl mx-auto w-full">
           {/* Title */}
-          <div
-            ref={titleRef}
-            className="text-center mb-[30vh] min-h-screen flex flex-col justify-center"
-          >
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
+          <div className="text-center mb-16">
+            <h1 className="text-5xl md:text-7xl font-bold text-[#165a94] mb-4 tracking-tight">
               Judging Criteria
             </h1>
-            <div className="h-1 w-32 bg-linear-to-r from-blue-500 to-purple-500 mx-auto"></div>
+            <div className="h-1 w-32 bg-[#165a94] mx-auto"></div>
           </div>
 
-          {/* Radar Chart */}
-          <div
-            ref={chartRef}
-            className={`sticky top-20 z-10 min-h-150 flex items-center justify-center transition-all duration-1000 ${
-              chartVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-20"
-            }`}
-          >
-            {/* Custom SVG Radar Chart */}
-            <svg viewBox="0 0 400 400" className="w-full max-w-2xl h-150">
+          {/* Chart Container */}
+          <div className="relative flex items-center justify-center min-h-175">
+            {/* Radar Chart */}
+            <svg viewBox="0 0 400 400" className="w-full max-w-2xl">
               {/* Grid Lines */}
               {[0.25, 0.5, 0.75, 1].map((scale) => (
                 <polygon
                   key={scale}
                   points="200,50 350,200 200,350 50,200"
                   fill="none"
-                  stroke="#334155"
+                  stroke="#165a94"
                   strokeWidth="1"
                   strokeDasharray="3 3"
                   opacity={0.3}
@@ -197,7 +244,7 @@ export default function JudgingCriteriaPage() {
                 y1="200"
                 x2="200"
                 y2="50"
-                stroke="#475569"
+                stroke="#165a94"
                 strokeWidth="1"
               />
               <line
@@ -205,7 +252,7 @@ export default function JudgingCriteriaPage() {
                 y1="200"
                 x2="350"
                 y2="200"
-                stroke="#475569"
+                stroke="#165a94"
                 strokeWidth="1"
               />
               <line
@@ -213,7 +260,7 @@ export default function JudgingCriteriaPage() {
                 y1="200"
                 x2="200"
                 y2="350"
-                stroke="#475569"
+                stroke="#165a94"
                 strokeWidth="1"
               />
               <line
@@ -221,7 +268,7 @@ export default function JudgingCriteriaPage() {
                 y1="200"
                 x2="50"
                 y2="200"
-                stroke="#475569"
+                stroke="#165a94"
                 strokeWidth="1"
               />
 
@@ -233,9 +280,9 @@ export default function JudgingCriteriaPage() {
                   200,${200 + chartData[2].value * 1.5}
                   ${200 - chartData[3].value * 1.5},200
                 `}
-                fill="#8b5cf6"
+                fill="#165a94"
                 fillOpacity="0.6"
-                stroke="#8b5cf6"
+                stroke="#165a94"
                 strokeWidth="3"
                 strokeLinejoin="round"
               />
@@ -268,161 +315,57 @@ export default function JudgingCriteriaPage() {
                   cx={point.x}
                   cy={point.y}
                   r="6"
-                  fill="#8b5cf6"
-                  stroke="white"
+                  fill="#165a94"
+                  stroke="#5fb8dc"
                   strokeWidth="2"
                   opacity={point.visible ? 1 : 0}
                   className="transition-opacity duration-300"
                 />
               ))}
-
-              {/* Labels */}
-              <text
-                x="200"
-                y="35"
-                textAnchor="middle"
-                fill="#e2e8f0"
-                fontSize="14"
-                fontWeight="600"
-              >
-                {CRITERIA[0].subject}
-              </text>
-              <text
-                x="365"
-                y="205"
-                textAnchor="start"
-                fill="#e2e8f0"
-                fontSize="14"
-                fontWeight="600"
-              >
-                {CRITERIA[1].subject}
-              </text>
-              <text
-                x="200"
-                y="380"
-                textAnchor="middle"
-                fill="#e2e8f0"
-                fontSize="14"
-                fontWeight="600"
-              >
-                {CRITERIA[2].subject}
-              </text>
-              <text
-                x="35"
-                y="205"
-                textAnchor="end"
-                fill="#e2e8f0"
-                fontSize="14"
-                fontWeight="600"
-              >
-                {CRITERIA[3].subject}
-              </text>
             </svg>
 
-            {/* Point Labels with Animation */}
+            {/* Criteria Descriptions - Around the Graph */}
             <div className="absolute inset-0 pointer-events-none">
               {CRITERIA.map((criterion, index) => {
                 const isVisible = chartData[index].value > 0;
                 const positions = [
-                  { top: "10%", left: "50%", transform: "translate(-50%, 0)" }, // Top
-                  { top: "50%", right: "5%", transform: "translate(0, -50%)" }, // Right
                   {
-                    bottom: "10%",
-                    left: "50%",
-                    transform: "translate(-50%, 0)",
-                  }, // Bottom
-                  { top: "50%", left: "5%", transform: "translate(0, -50%)" }, // Left
+                    position: "top-[2%] left-1/2 -translate-x-1/2",
+                  },
+                  {
+                    position: "top-1/2 right-[2%] -translate-y-1/2",
+                  },
+                  {
+                    position: "bottom-[2%] left-1/2 -translate-x-1/2",
+                  },
+                  {
+                    position: "top-1/2 left-[2%] -translate-y-1/2",
+                  },
                 ];
 
                 return (
                   <div
                     key={criterion.subject}
-                    className={`absolute transition-all duration-700 ${
-                      isVisible ? "opacity-100 scale-100" : "opacity-0 scale-50"
+                    className={`absolute ${positions[index].position} max-w-xs transition-all duration-700 ${
+                      isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
                     }`}
-                    style={positions[index]}
                   >
-                    <div className="bg-linear-to-br from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full shadow-2xl border border-white/20 backdrop-blur-sm">
-                      <span className="text-sm md:text-base font-semibold">
+                    <div className="bg-[#5fb8dc]/10 border border-[#165a94] rounded-lg p-4 backdrop-blur-md shadow-2xl pointer-events-auto">
+                      <h3 className="text-base font-bold text-[#165a94] mb-2 flex items-center gap-2">
+                        <span className="text-lg text-[#104069]">
+                          {index + 1}.
+                        </span>
                         {criterion.subject}
-                      </span>
+                      </h3>
+                      <p className="text-[#104069] text-sm leading-relaxed">
+                        {criterion.description}
+                      </p>
                     </div>
                   </div>
                 );
               })}
             </div>
-
-            {/* Criteria Descriptions - Around the Graph */}
-            <div className="absolute inset-0 pointer-events-none">
-              {[
-                {
-                  position: "top-[5%] right-[5%]",
-                  text: "Innovation and originality of the solution. How unique is your approach?",
-                },
-                {
-                  position: "bottom-[5%] right-[5%]",
-                  text: "Clear understanding and articulation of the problem being solved.",
-                },
-                {
-                  position: "bottom-[5%] left-[5%]",
-                  text: "Technical depth, efficiency, and optimization of the solution.",
-                },
-                {
-                  position: "top-[5%] left-[5%]",
-                  text: "Well-structured approach and systematic problem-solving methodology.",
-                },
-              ].map((desc, index) => (
-                <div
-                  key={index}
-                  className={`absolute ${desc.position} max-w-50 transition-all duration-700 ${
-                    chartData[index].value > 50
-                      ? "opacity-100 scale-100"
-                      : "opacity-0 scale-90"
-                  }`}
-                >
-                  <div className="bg-slate-800/95 border border-slate-700 rounded-lg p-3 backdrop-blur-md shadow-2xl pointer-events-auto">
-                    <h3 className="text-sm font-bold text-white mb-1 flex items-center gap-1">
-                      <span className="text-base text-purple-400">
-                        {index + 1}.
-                      </span>
-                      {CRITERIA[index].subject}
-                    </h3>
-                    <p className="text-slate-300 text-xs leading-relaxed">
-                      {desc.text}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
-
-          {/* Scroll Trigger Points (invisible divs to trigger animations) */}
-          <div ref={point1Ref} className="h-[30vh]" />
-          <div ref={point2Ref} className="h-[30vh]" />
-          <div ref={point3Ref} className="h-[30vh]" />
-          <div ref={point4Ref} className="h-[30vh]" />
-
-          {/* Scroll Indicator */}
-          {chartData.filter((d) => d.value > 0).length < 4 && (
-            <div className="text-center mt-12 animate-bounce">
-              <p className="text-slate-400 text-sm">
-                Scroll to reveal all criteria
-              </p>
-              <svg
-                className="w-6 h-6 mx-auto mt-2 text-slate-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </div>
-          )}
         </div>
       </section>
     </main>
