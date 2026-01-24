@@ -14,7 +14,7 @@ const FAQS = [
     answer: "25th of January",
   },
   {
-    question: "How round will there be?",
+    question: "How many rounds will there be?",
     answer:
       "2 Rounds, Round 1 will end on the 14th of Feb, and Round 2 will take place on the 28th of Feb",
   },
