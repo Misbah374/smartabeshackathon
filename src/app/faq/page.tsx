@@ -20,7 +20,7 @@ const FAQS = [
   },
   {
     question: "How to get in touch?",
-    answer: "Reach out to contacts below,",
+    answer: "Reach out to us via the contact details on the home page.",
   },
   {
     question: "How many teams will qualify for Round 2?",
