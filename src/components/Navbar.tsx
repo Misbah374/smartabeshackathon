@@ -11,6 +11,7 @@ export default function Navbar() {
     { href: "/", label: "Home" },
     { href: "/judging-criteria", label: "Judging Criteria" },
     { href: "/faq", label: "FAQ" },
+    { href: "/contacts", label: "Contacts" },
   ];
 
   return (
