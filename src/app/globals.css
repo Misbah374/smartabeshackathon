@@ -27,17 +27,16 @@ body {
 
 /* Blueprint Grid Pattern */
 .blueprint-grid {
-  background-image: linear-gradient(var(--blueprint-dark) 1px, transparent 1px),
+  background-image:
+    linear-gradient(var(--blueprint-dark) 1px, transparent 1px),
     linear-gradient(90deg, var(--blueprint-dark) 1px, transparent 1px);
   background-size: 40px 40px;
   background-position: center center;
 }
 
 .blueprint-grid-sub {
-  background-image: linear-gradient(
-      rgba(55, 145, 196, 0.3) 1px,
-      transparent 1px
-    ),
+  background-image:
+    linear-gradient(rgba(55, 145, 196, 0.3) 1px, transparent 1px),
     linear-gradient(90deg, rgba(55, 145, 196, 0.3) 1px, transparent 1px);
   background-size: 10px 10px;
   background-position: center center;

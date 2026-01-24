@@ -2,7 +2,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -127,10 +126,10 @@ export default function Home() {
   return (
     <main
       ref={containerRef}
-      className="relative min-h-screen w-full overflow-hidden blueprint-grid blueprint-grid-sub select-none"
+      className="w-full max-h-[calc(100dvh-4rem)] overflow-hidden select-none"
     >
       {/* Texture Overlay */}
-      <div className="absolute inset-0 vignette pointer-events-none z-20" />
+      <div className="absolute inset-0 pointer-events-none z-20" />
 
       {/* SVG Drawing Layer */}
       <svg className="absolute inset-0 w-full h-full z-10 pointer-events-none">
@@ -275,14 +274,6 @@ export default function Home() {
             <div className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-[#165a94]"></div>
             <div className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-[#165a94]"></div>
           </a>
-
-          {/* Judging Criteria Link */}
-          <Link
-            href="/judging-criteria"
-            className="footer-element group relative px-6 py-2 border border-[#165a94] text-[#165a94] font-semibold uppercase tracking-wide hover:bg-[#165a94]/10 hover:border-[#5fb8dc] hover:text-[#5fb8dc] transition-all duration-300"
-          >
-            <span className="relative z-10 text-sm">View Judging Criteria</span>
-          </Link>
         </div>
 
         {/* Social Icons (Bottom Left) */}

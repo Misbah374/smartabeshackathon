@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,9 +45,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-red-500 blueprint-grid blueprint-grid-sub h-full select-none relative overflow-x-hidden`}
       >
-        {children}
+        <div className="vignette absolute top-0 left-0 right-0 bottom-0 pointer-events-none z-20" />
+        <Navbar />
+        <div className="pt-16">{children}</div>
       </body>
     </html>
   );

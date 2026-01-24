@@ -2,7 +2,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import gsap from "gsap";
 
 const CRITERIA = [
@@ -119,9 +118,9 @@ export default function JudgingCriteriaPage() {
   }, []);
 
   return (
-    <main className="relative min-h-screen w-full overflow-hidden blueprint-grid blueprint-grid-sub select-none">
+    <main className="min-h-screen w-full overflow-hidden blueprint-grid blueprint-grid-sub select-none">
       {/* Texture Overlay */}
-      <div className="absolute inset-0 vignette pointer-events-none z-20" />
+      <div className="absolute inset-0 pointer-events-none z-20" />
 
       {/* SVG Drawing Layer */}
       <svg className="absolute inset-0 w-full h-full z-10 pointer-events-none">
@@ -185,29 +184,6 @@ export default function JudgingCriteriaPage() {
           className="opacity-30"
         />
       </svg>
-
-      {/* Back Button */}
-      <div className="fixed top-8 left-8 z-50">
-        <Link
-          href="/"
-          className="flex items-center gap-2 text-[#165a94] hover:text-[#5fb8dc] transition-colors group"
-        >
-          <svg
-            className="w-6 h-6 group-hover:-translate-x-1 transition-transform"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"
-            />
-          </svg>
-          <span className="font-semibold">Back to Home</span>
-        </Link>
-      </div>
 
       {/* Content Section */}
       <section className="relative z-10 min-h-screen flex items-center justify-center py-20 px-4">
