@@ -10,6 +10,7 @@ export default function Navbar() {
   const links = [
     { href: "/", label: "Home" },
     { href: "/judging-criteria", label: "Judging Criteria" },
+    { href: "/faq", label: "FAQ" },
   ];
 
   return (

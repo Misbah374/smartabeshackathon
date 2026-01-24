@@ -1,7 +1,7 @@
 /** @format */
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
 
 const CRITERIA = [
@@ -32,6 +32,7 @@ const CRITERIA = [
 ];
 
 export default function JudgingCriteriaPage() {
+  const containerRef = useRef<HTMLDivElement>(null);
   const [chartData, setChartData] = useState(
     CRITERIA.map((c) => ({ subject: c.subject, value: 0, fullMark: 100 })),
   );
@@ -71,54 +72,72 @@ export default function JudgingCriteriaPage() {
       ]);
     };
 
-    // Create timeline for sequential animations
-    const tl = gsap.timeline({ delay: 0.5 });
+    const ctx = gsap.context(() => {
+      // Create timeline for sequential animations
+      const tl = gsap.timeline({ delay: 0.5 });
 
-    // Animate each point sequentially
-    tl.to(animatedValues, {
-      point1: 100,
-      duration: 1.5,
-      ease: "power2.out",
-      onUpdate: updateChart,
-    })
-      .to(
-        animatedValues,
-        {
-          point2: 100,
+      // Animate title
+      tl.from(".criteria-title", {
+        opacity: 0,
+        y: -30,
+        duration: 1,
+      })
+        // Animate divider
+        .from(
+          ".criteria-divider",
+          {
+            scaleX: 0,
+            duration: 0.8,
+          },
+          "-=0.5",
+        )
+        // Animate each point sequentially
+        .to(animatedValues, {
+          point1: 100,
           duration: 1.5,
           ease: "power2.out",
           onUpdate: updateChart,
-        },
-        "+=0.5",
-      )
-      .to(
-        animatedValues,
-        {
-          point3: 100,
-          duration: 1.5,
-          ease: "power2.out",
-          onUpdate: updateChart,
-        },
-        "+=0.5",
-      )
-      .to(
-        animatedValues,
-        {
-          point4: 100,
-          duration: 1.5,
-          ease: "power2.out",
-          onUpdate: updateChart,
-        },
-        "+=0.5",
-      );
+        })
+        .to(
+          animatedValues,
+          {
+            point2: 100,
+            duration: 1.5,
+            ease: "power2.out",
+            onUpdate: updateChart,
+          },
+          "+=0.5",
+        )
+        .to(
+          animatedValues,
+          {
+            point3: 100,
+            duration: 1.5,
+            ease: "power2.out",
+            onUpdate: updateChart,
+          },
+          "+=0.5",
+        )
+        .to(
+          animatedValues,
+          {
+            point4: 100,
+            duration: 1.5,
+            ease: "power2.out",
+            onUpdate: updateChart,
+          },
+          "+=0.5",
+        );
+    }, containerRef);
 
-    return () => {
-      tl.kill();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
-    <main className="min-h-screen w-full overflow-hidden blueprint-grid blueprint-grid-sub select-none">
+    <main
+      ref={containerRef}
+      className="min-h-screen w-full overflow-hidden blueprint-grid blueprint-grid-sub select-none"
+    >
       {/* Texture Overlay */}
       <div className="absolute inset-0 pointer-events-none z-20" />
 
@@ -190,10 +209,10 @@ export default function JudgingCriteriaPage() {
         <div className="max-w-7xl mx-auto w-full">
           {/* Title */}
           <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-7xl font-bold text-[#165a94] mb-4 tracking-tight">
+            <h1 className="criteria-title text-5xl md:text-7xl font-bold text-[#165a94] mb-4 tracking-tight">
               Judging Criteria
             </h1>
-            <div className="h-1 w-32 bg-[#165a94] mx-auto"></div>
+            <div className="criteria-divider h-1 w-32 bg-[#165a94] mx-auto"></div>
           </div>
 
           {/* Chart Container */}
