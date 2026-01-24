@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://smartabeshackathon.tech"),
   openGraph: {
-    title: "Smart ABES Hackathon",
+    title: "Smart ABES Hackathon - The Missing Piece",
     description:
       "A hackathon about building projects that work better because of Data Structures and Algorithms.",
     images: ["/logo.png"],

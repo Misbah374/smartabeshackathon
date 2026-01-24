@@ -11,6 +11,7 @@ export default function Navbar() {
 
   const links = [
     { href: "/", label: "Register!" },
+    { href: "/about", label: "About" },
     { href: "/problem-statements", label: "Problem Statements" },
     { href: "/judging-criteria", label: "Judging Criteria" },
     { href: "/faq", label: "FAQ" },
