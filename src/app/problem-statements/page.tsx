@@ -47,7 +47,7 @@ export default function ProblemStatementsPage() {
       className="min-h-screen w-full overflow-hidden select-none"
     >
       {/* Texture Overlay */}
-      <div className="absolute inset-0 vignette pointer-events-none z-20" />
+      <div className="absolute inset-0 pointer-events-none z-20" />
 
       {/* SVG Drawing Layer */}
       <svg className="absolute inset-0 w-full h-full z-10 pointer-events-none">

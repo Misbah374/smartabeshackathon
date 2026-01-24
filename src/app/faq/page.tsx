@@ -143,7 +143,7 @@ export default function FAQPage() {
           {/* Title */}
           <div className="text-center mb-16">
             <h1 className="faq-title text-5xl md:text-7xl font-bold text-[#165a94] mb-4 tracking-tight font-mono">
-              FAQ
+              You might be thiking...
             </h1>
             <div className="faq-divider h-1 w-32 bg-[#165a94] mx-auto"></div>
           </div>
