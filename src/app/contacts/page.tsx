@@ -4,27 +4,28 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Link from "next/link";
+import Image from "next/image";
 
 const SOCIAL_LINKS = [
   {
     name: "WhatsApp",
     url: "https://chat.whatsapp.com/JtmozxCOd2mEojTONjOn7c",
-    icon: "💬",
+    icon: "/icons/whatsapp.svg",
   },
   {
     name: "Discord",
     url: "https://discord.gg/M6emcsPZ8e",
-    icon: "🎮",
+    icon: "/icons/discord.svg",
   },
   {
     name: "Instagram",
     url: "https://www.instagram.com/acm_abesec/",
-    icon: "📷",
+    icon: "/icons/instagram.svg",
   },
   {
     name: "LinkedIn",
     url: "https://www.linkedin.com/company/acm-w-abesec/",
-    icon: "💼",
+    icon: "/icons/linkedin.svg",
   },
 ];
 
@@ -203,8 +204,13 @@ export default function ContactsPage() {
                   rel="noopener noreferrer"
                   className="social-link group"
                 >
-                  <div className="bg-[#3791c4]/30 backdrop-blur-sm border-2 border-[#165a94] p-6 rounded-lg text-center hover:bg-[#3791c4]/50 transition-all duration-300 hover:scale-105 hover:border-white">
-                    <div className="text-4xl mb-3">{link.icon}</div>
+                  <div className="bg-[#3791c4]/30 h-full justify-center backdrop-blur-sm border-2 border-[#165a94] p-6 rounded-lg text-center hover:bg-[#3791c4]/50 transition-all duration-300 hover:scale-105 hover:border-white flex flex-col items-center">
+                    <Image
+                      src={link.icon}
+                      alt={link.name}
+                      width={40}
+                      height={40}
+                    />
                     <p className="text-white font-mono font-bold text-sm md:text-base">
                       {link.name}
                     </p>
