@@ -102,6 +102,67 @@ const DefencePS1 = () => {
           </div>
         </div>
       </section>
+
+      {/* Summary Table */}
+      <section className="mt-12 mb-8">
+        <h2 className="text-2xl font-semibold mb-6 text-center">
+          Problem Gist
+        </h2>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse border border-[#165a94]/60">
+            <tbody>
+              <tr>
+                <td className="border border-[#165a94]/60 px-4 py-3 font-semibold w-1/3 text-[#165a94]">
+                  Problem Type
+                </td>
+                <td className="border border-[#165a94]/60 px-4 py-3 text-gray-700">
+                  Drone Path Planning Algorithm
+                </td>
+              </tr>
+              <tr>
+                <td className="border border-[#165a94]/60 px-4 py-3 font-semibold text-[#165a94]">
+                  Domain
+                </td>
+                <td className="border border-[#165a94]/60 px-4 py-3 text-gray-700">
+                  Defence & Security Surveillance
+                </td>
+              </tr>
+              <tr>
+                <td className="border border-[#165a94]/60 px-4 py-3 font-semibold text-[#165a94]">
+                  Key Objectives
+                </td>
+                <td className="border border-[#165a94]/60 px-4 py-3 text-gray-700">
+                  Maximum coverage, Minimum energy, Safe navigation
+                </td>
+              </tr>
+              <tr>
+                <td className="border border-[#165a94]/60 px-4 py-3 font-semibold text-[#165a94]">
+                  Constraints
+                </td>
+                <td className="border border-[#165a94]/60 px-4 py-3 text-gray-700">
+                  Limited battery, No-fly zones, Obstacles, Fixed start position
+                </td>
+              </tr>
+              <tr>
+                <td className="border border-[#165a94]/60 px-4 py-3 font-semibold text-[#165a94]">
+                  Environment
+                </td>
+                <td className="border border-[#165a94]/60 px-4 py-3 text-gray-700">
+                  Grid/Map with safe and restricted zones
+                </td>
+              </tr>
+              <tr>
+                <td className="border border-[#165a94]/60 px-4 py-3 font-semibold text-[#165a94]">
+                  Challenge
+                </td>
+                <td className="border border-[#165a94]/60 px-4 py-3 text-gray-700">
+                  Handle incomplete/inaccurate map data dynamically
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </div>
   );
 };
