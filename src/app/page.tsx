@@ -235,14 +235,16 @@ export default function Home() {
         </div>
 
         {/* Main Logo Group */}
-        <div className="relative w-full max-w-2xl aspect-square flex items-center justify-center mb-16">
+        <div className="relative w-full max-w-2xl aspect-square flex items-center justify-center mb-16 select-none">
           <Image
             src="/logo-r.png"
             alt="Schematic Logo Background"
             width={800}
             height={800}
-            className="logo-bg-img relative z-0 object-contain drop-shadow-xl"
+            className="logo-bg-img relative z-0 object-contain drop-shadow-xl select-none"
             priority
+            draggable={false}
+            onContextMenu={(e) => e.preventDefault()}
           />
 
           <Image
@@ -250,8 +252,10 @@ export default function Home() {
             alt="Schematic Logo Foreground"
             width={800}
             height={800}
-            className="logo-fg-img object-contain absolute w-[75%] h-[75%] top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] z-10"
+            className="logo-fg-img object-contain absolute w-[75%] h-[75%] top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] z-10 select-none"
             priority
+            draggable={false}
+            onContextMenu={(e) => e.preventDefault()}
           />
 
           {/* Overlay Grid on Logo */}
