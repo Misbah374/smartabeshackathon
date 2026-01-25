@@ -1,0 +1,28 @@
+# Smart ABES Hackathon robots.txt
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /contacts
+Allow: /faq
+Allow: /judging-criteria
+Allow: /problem-statements
+
+# Disallow private pages if any
+Disallow: /admin
+Disallow: /private
+
+# Crawl delay
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://smartabeshackathon.tech/sitemap.xml
+
+# Google specific
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing specific
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1

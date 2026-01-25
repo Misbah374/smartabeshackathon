@@ -1,0 +1,39 @@
+{
+  "name": "Smart ABES Hackathon 2025",
+  "short_name": "ABES Hackathon",
+  "description": "The Missing Piece - A hackathon about building projects that work better because of Data Structures and Algorithms",
+  "start_url": "https://smartabeshackathon.tech",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#dc2626",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo-circle.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["productivity", "education"],
+  "screenshots": [
+    {
+      "src": "/logo.png",
+      "sizes": "540x720",
+      "type": "image/png"
+    }
+  ]
+}

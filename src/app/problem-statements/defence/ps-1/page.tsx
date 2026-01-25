@@ -1,5 +1,20 @@
 /** @format */
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Autonomous Surveillance Path Optimisation - Smart ABES Hackathon",
+  description:
+    "Problem Statement 1: Autonomous Surveillance Path Optimisation. Optimize patrol routes for security surveillance systems using advanced algorithms.",
+  openGraph: {
+    title: "Problem Statement 1 - Autonomous Surveillance Path Optimisation",
+    description:
+      "Solve the autonomous surveillance optimization challenge in Smart ABES Hackathon",
+    type: "website",
+    url: "https://smartabeshackathon.tech/problem-statements/defence/ps-1",
+  },
+};
+
 const DefencePS1 = () => {
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
