@@ -3,6 +3,7 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import Link from "next/link";
 
 export default function ProblemStatementsPage() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -35,6 +36,17 @@ export default function ProblemStatementsPage() {
             duration: 0.8,
           },
           "-=0.3",
+        )
+        // Animate cards
+        .from(
+          ".ps-card",
+          {
+            opacity: 0,
+            y: 30,
+            duration: 0.6,
+            stagger: 0.2,
+          },
+          "-=0.2",
         );
     }, containerRef);
 
@@ -114,17 +126,34 @@ export default function ProblemStatementsPage() {
 
       {/* Content Section */}
       <section className="relative z-10 min-h-screen flex items-center justify-center py-20 px-4">
-        <div className="max-w-4xl mx-auto w-full text-center">
+        <div className="max-w-6xl mx-auto w-full">
           {/* Title */}
-          <h1 className="ps-title text-6xl md:text-8xl lg:text-9xl font-bold text-[#165a94] mb-8 tracking-tight font-mono">
-            Coming Soon
+          <h1 className="ps-title text-5xl md:text-7xl lg:text-8xl font-bold text-[#165a94] mb-8 tracking-tight font-mono text-center">
+            Problem Statements
           </h1>
-          <div className="ps-divider h-1 w-48 bg-[#165a94] mx-auto mb-8"></div>
+          <div className="ps-divider h-1 w-48 bg-[#165a94] mx-auto mb-12"></div>
 
           {/* Subtitle */}
-          <p className="ps-subtitle text-xl md:text-2xl text-white font-mono">
-            Problem Statements will be revealed soon
+          <p className="ps-subtitle text-xl md:text-2xl text-white font-mono text-center mb-16">
+            Explore challenges across different domains
           </p>
+
+          {/* Problem Statement Categories */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+            {/* Defence Category */}
+            <Link href="/problem-statements/defence" className="ps-card block">
+              <div className="bg-[#165a94]/10 backdrop-blur-sm border-2 border-[#165a94] p-8 rounded-lg hover:bg-[#165a94]/20 transition-all duration-300 hover:scale-105 cursor-pointer">
+                <h2 className="text-2xl font-bold text-[#165a94] mb-4 font-mono">
+                  Defence
+                </h2>
+                <p className="text-white/80">
+                  Drone surveillance and autonomous path optimization challenges
+                </p>
+              </div>
+            </Link>
+
+            {/* Additional categories can be added here */}
+          </div>
         </div>
       </section>
     </main>
