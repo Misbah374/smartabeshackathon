@@ -126,7 +126,7 @@ export default function Home() {
   return (
     <main
       ref={containerRef}
-      className="w-full max-h-[calc(100dvh-4rem)] overflow-hidden select-none"
+      className="w-full max-h-[calc(100dvh-4rem)] overflow-hidden "
     >
       {/* Texture Overlay */}
       <div className="absolute inset-0 pointer-events-none z-20" />

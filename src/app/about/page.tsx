@@ -40,10 +40,7 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <main
-      ref={containerRef}
-      className="min-h-screen w-full overflow-hidden select-none"
-    >
+    <main ref={containerRef} className="min-h-screen w-full overflow-hidden ">
       {/* Texture Overlay */}
       <div className="absolute inset-0 pointer-events-none z-20" />
 

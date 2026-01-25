@@ -136,7 +136,7 @@ export default function JudgingCriteriaPage() {
   return (
     <main
       ref={containerRef}
-      className="min-h-screen w-full overflow-hidden blueprint-grid blueprint-grid-sub select-none"
+      className="min-h-screen w-full overflow-hidden blueprint-grid blueprint-grid-sub "
     >
       {/* Texture Overlay */}
       <div className="absolute inset-0 pointer-events-none z-20" />
