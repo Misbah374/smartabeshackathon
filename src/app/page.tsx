@@ -335,7 +335,7 @@ export default function Home() {
             className="footer-element group relative p-2 transition-transform hover:scale-110"
           >
             <Image
-              src="/icons/WhatsApp_outline.svg"
+              src="/icons/whatsapp_outline.svg"
               alt="Join us on WhatsApp"
               width={32}
               height={32}
