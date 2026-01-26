@@ -144,7 +144,19 @@ export default function ProblemStatementsPage() {
                   Defence
                 </h2>
                 <p className="text-white/80">
-                  Drone surveillance and autonomous path optimization challenges
+                  Security, surveillance, and strategic defense systems
+                </p>
+              </div>
+            </Link>
+
+            {/* AI Category */}
+            <Link href="/problem-statements/ai" className="ps-card block">
+              <div className="bg-[#165a94]/10 backdrop-blur-sm border-2 border-[#165a94] p-8 rounded-lg hover:bg-[#165a94]/20 transition-all duration-300 hover:scale-105 cursor-pointer">
+                <h2 className="text-2xl font-bold text-[#165a94] mb-4 font-mono">
+                  AI
+                </h2>
+                <p className="text-white/80">
+                  Machine learning, automation, and intelligent systems
                 </p>
               </div>
             </Link>
