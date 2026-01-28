@@ -13,6 +13,7 @@ export default function Navbar() {
     { href: "/", label: "Register!" },
     { href: "/about", label: "About" },
     { href: "/problem-statements", label: "Problem Statements" },
+    { href: "/timeline", label: "Timeline" },
     { href: "/judging-criteria", label: "Judging Criteria" },
     { href: "/faq", label: "FAQ" },
     { href: "/contacts", label: "Contacts" },
