@@ -41,7 +41,7 @@ const timelineEvents: TimelineEvent[] = [
       "• Fast full-stack development",
       "• Real-world engineering thinking",
     ],
-    icon: "❓",
+    icon: "🎓",
     type: "mystery",
     supportingText: "Supportive · Non-evaluative · Learning-focused",
   },
@@ -73,12 +73,22 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     id: "round-2-start",
-    date: "Feb 28, 2026",
+    date: "Feb 16, 2026",
     title: "Round 2 · Implementation Phase",
     description:
       "Shortlisted teams move into execution and building, implementing the ideas developed during Round 1.",
     icon: "⚡",
     type: "major",
+  },
+  {
+    id: "final-day",
+    date: "Feb 28, 2026",
+    title: "Final Day!",
+    description:
+      "Top 30 teams present their complete working solutions to judges. Final evaluations, live demonstrations, and winner announcements.",
+    icon: "🏆",
+    type: "major",
+    supportingText: "The moment of truth · Where champions emerge",
   },
 ];
 
@@ -167,6 +177,37 @@ export default function Timeline() {
         {timelineEvents.map((event, index) => {
           const isMajor = event.type === "major";
           const isMystery = event.type === "mystery";
+          const isStart = event.id === "round-1-start";
+          const isFirstEval = event.id === "round-1-eval";
+          const isFinal = event.id === "final-day";
+
+          // Define unique styling for each special event
+          let nodeStyle = "";
+          let cardBorder = "";
+          let cardBg = "bg-white/3";
+          let activeClass = "";
+
+          if (isStart) {
+            nodeStyle = "bg-[#5fb8dc] border-[#165a94]";
+            cardBorder = "border-[#165a94] border-l-4";
+            activeClass = "event-start";
+          } else if (isMystery) {
+            nodeStyle = "bg-[#3791c4] border-[#165a94]";
+            cardBorder = "border-[#3791c4]/50 border-dashed";
+            cardBg = "bg-[#3791c4]/5";
+            activeClass = "event-mystery";
+          } else if (isFirstEval) {
+            nodeStyle = "bg-[#165a94] border-[#165a94]";
+            cardBorder = "border-[#165a94]";
+            activeClass = "event-eval";
+          } else if (isFinal) {
+            nodeStyle = "bg-[#165a94] border-[#165a94]";
+            cardBorder = "border-[#165a94] border-4";
+            activeClass = "event-final";
+          } else {
+            nodeStyle = "bg-[#5fb8dc] border-[#165a94]";
+            cardBorder = isMajor ? "border-[#165a94]" : "border-[#5fb8dc]/50";
+          }
 
           return (
             <div
@@ -180,14 +221,13 @@ export default function Timeline() {
               <div className="absolute left-8 md:left-16 transform -translate-x-1/2 z-10">
                 <div
                   className={`
-                  ${isMajor ? "w-16 h-16" : "w-12 h-12"}
+                  ${isFinal ? "w-20 h-20 text-3xl" : "w-16 h-16 text-2xl"}
                   rounded-full 
-                  bg-[#5fb8dc]
-                  border-4 border-[#165a94]
+                  ${nodeStyle}
+                  border-4
                   flex items-center justify-center
-                  text-2xl
                   shadow-lg
-                  transition-shadow duration-300
+                  transition-all duration-300
                 `}
                 >
                   {event.icon}
@@ -199,23 +239,27 @@ export default function Timeline() {
                 <div
                   className={`
                   timeline-card
+                  ${activeClass}
                   p-6 md:p-8 
-                  bg-white/3 backdrop-blur-sm
+                  ${cardBg} backdrop-blur-sm
                   border-2 
-                  ${
-                    isMajor
-                      ? "border-[#165a94]"
-                      : isMystery
-                        ? "border-[#3791c4]"
-                        : "border-[#5fb8dc]/50"
-                  }
+                  ${cardBorder}
                   hover:bg-white/10
                   transition-all duration-300
                   font-mono
+                  relative
+                  overflow-hidden
                 `}
                 >
+                  {/* Decorative corner for final event */}
+                  {isFinal && (
+                    <div className="absolute top-0 right-0 w-16 h-16 opacity-10">
+                      <div className="absolute top-0 right-0 border-t-2 border-r-2 border-white w-full h-full"></div>
+                    </div>
+                  )}
+
                   {/* Date */}
-                  <div className="text-sm font-bold mb-2 text-white/70 tracking-wider">
+                  <div className="text-sm font-bold mb-2 tracking-wider text-white/70">
                     {event.date}
                   </div>
 
@@ -223,6 +267,7 @@ export default function Timeline() {
                   <h3
                     className={`
                     ${isMajor ? "text-2xl md:text-3xl" : "text-xl md:text-2xl"}
+                    ${isFinal ? "text-3xl md:text-4xl" : ""}
                     font-bold mb-4
                     text-white
                     tracking-tight
@@ -246,7 +291,7 @@ export default function Timeline() {
 
                   {/* Evaluation Criteria */}
                   {event.evaluationCriteria && (
-                    <div className="mb-4 p-4 bg-[#165a94]/30 border border-[#165a94]">
+                    <div className="mb-4 p-4 bg-[#165a94]/20 border border-[#165a94]/50">
                       <p className="font-bold text-white mb-2 text-sm">
                         EVALUATION CRITERIA:
                       </p>
@@ -260,7 +305,7 @@ export default function Timeline() {
 
                   {/* Outcome */}
                   {event.outcome && (
-                    <div className="mb-4 p-3 bg-[#3791c4]/30 border border-[#3791c4]">
+                    <div className="mb-4 p-3 bg-[#3791c4]/20 border border-[#3791c4]/50">
                       <p className="font-bold text-white text-sm">
                         ✓ OUTCOME: {event.outcome}
                       </p>
@@ -269,7 +314,7 @@ export default function Timeline() {
 
                   {/* Supporting Text */}
                   {event.supportingText && (
-                    <div className="text-xs italic text-white/60 mt-3 border-t border-white/20 pt-3">
+                    <div className="text-xs italic mt-3 border-t border-white/20 pt-3 text-white/60">
                       {event.supportingText}
                     </div>
                   )}
@@ -283,12 +328,41 @@ export default function Timeline() {
       {/* Extra spacing for scroll animation */}
       <div className="h-32"></div>
 
-      {/* Global styles for active timeline */}
+      {/* Global styles for active timeline - subtle blueprint style */}
       <style jsx global>{`
-        .timeline-active .timeline-card {
-          background-color: rgba(255, 255, 255, 0.15) !important;
-          filter: drop-shadow(0 0 16px rgba(22, 90, 148, 0.6));
-          transform: scale(1.02);
+        /* Start Event */
+        .timeline-active .event-start {
+          background: rgba(22, 90, 148, 0.15) !important;
+          filter: drop-shadow(0 0 12px rgba(22, 90, 148, 0.5));
+          border-left-width: 6px !important;
+        }
+
+        /* Mystery Drop */
+        .timeline-active .event-mystery {
+          background: rgba(55, 145, 196, 0.15) !important;
+          filter: drop-shadow(0 0 12px rgba(55, 145, 196, 0.5));
+        }
+
+        /* Evaluation */
+        .timeline-active .event-eval {
+          background: rgba(22, 90, 148, 0.2) !important;
+          filter: drop-shadow(0 0 12px rgba(22, 90, 148, 0.6));
+        }
+
+        /* Final Day */
+        .timeline-active .event-final {
+          background: rgba(22, 90, 148, 0.25) !important;
+          filter: drop-shadow(0 0 16px rgba(22, 90, 148, 0.7));
+          border-width: 6px !important;
+        }
+
+        /* Default active state */
+        .timeline-active
+          .timeline-card:not(.event-start):not(.event-mystery):not(
+            .event-eval
+          ):not(.event-final) {
+          background-color: rgba(255, 255, 255, 0.1) !important;
+          filter: drop-shadow(0 0 10px rgba(22, 90, 148, 0.4));
         }
       `}</style>
     </div>
