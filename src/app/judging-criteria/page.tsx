@@ -205,18 +205,45 @@ export default function JudgingCriteriaPage() {
       </svg>
 
       {/* Content Section */}
-      <section className="relative z-10 min-h-screen flex items-center justify-center py-20 px-4">
+      <section className="relative z-10 min-h-screen flex items-center justify-center py-20 px-4 pt-32">
         <div className="max-w-7xl mx-auto w-full">
           {/* Title */}
-          <div className="text-center mb-16">
-            <h1 className="criteria-title text-5xl md:text-7xl font-bold text-[#165a94] mb-4 tracking-tight">
+          <div className="text-center mb-20">
+            <h1 className="criteria-title text-5xl md:text-7xl font-bold text-[#165a94] mb-6 tracking-tight leading-tight font-mono">
               Judging Criteria
             </h1>
             <div className="criteria-divider h-1 w-32 bg-[#165a94] mx-auto"></div>
           </div>
 
-          {/* Chart Container */}
-          <div className="relative flex items-center justify-center min-h-175">
+          {/* Mobile Layout - Simple List */}
+          <div className="md:hidden space-y-6">
+            {CRITERIA.map((criterion, index) => {
+              const isVisible = chartData[index].value > 0;
+              return (
+                <div
+                  key={criterion.subject}
+                  className={`transition-all duration-700 ${
+                    isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
+                  }`}
+                >
+                  <div className="bg-[#5fb8dc]/10 border border-[#165a94] rounded-lg p-6 backdrop-blur-md shadow-2xl">
+                    <h3 className="text-lg font-bold text-[#165a94] mb-4 flex items-center gap-3 leading-tight">
+                      <span className="text-xl text-[#104069] flex-shrink-0">
+                        {index + 1}.
+                      </span>
+                      <span>{criterion.subject}</span>
+                    </h3>
+                    <p className="text-[#104069] text-sm leading-relaxed">
+                      {criterion.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Desktop Layout - Chart Container */}
+          <div className="hidden md:flex relative items-center justify-center min-h-175">
             {/* Radar Chart */}
             <svg viewBox="0 0 400 400" className="w-full max-w-2xl">
               {/* Grid Lines */}
@@ -345,12 +372,12 @@ export default function JudgingCriteriaPage() {
                       isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
                     }`}
                   >
-                    <div className="bg-[#5fb8dc]/10 border border-[#165a94] rounded-lg p-4 backdrop-blur-md shadow-2xl pointer-events-auto">
-                      <h3 className="text-base font-bold text-[#165a94] mb-2 flex items-center gap-2">
-                        <span className="text-lg text-[#104069]">
+                    <div className="bg-[#5fb8dc]/10 border border-[#165a94] rounded-lg p-5 backdrop-blur-md shadow-2xl pointer-events-auto">
+                      <h3 className="text-base font-bold text-[#165a94] mb-3 flex items-center gap-2 leading-tight">
+                        <span className="text-lg text-[#104069] flex-shrink-0">
                           {index + 1}.
                         </span>
-                        {criterion.subject}
+                        <span>{criterion.subject}</span>
                       </h3>
                       <p className="text-[#104069] text-sm leading-relaxed">
                         {criterion.description}
