@@ -29,6 +29,12 @@ const CRITERIA = [
     description:
       "Well-structured approach and systematic problem-solving methodology.",
   },
+  {
+    subject: "Feasibility",
+    fullMark: 100,
+    description:
+      "Practicality and viability of implementing the solution in real-world scenarios.",
+  },
 ];
 
 export default function JudgingCriteriaPage() {
@@ -44,6 +50,7 @@ export default function JudgingCriteriaPage() {
       point2: 0,
       point3: 0,
       point4: 0,
+      point5: 0,
     };
 
     // Function to update chart data
@@ -67,6 +74,11 @@ export default function JudgingCriteriaPage() {
         {
           subject: CRITERIA[3].subject,
           value: animatedValues.point4,
+          fullMark: 100,
+        },
+        {
+          subject: CRITERIA[4].subject,
+          value: animatedValues.point5,
           fullMark: 100,
         },
       ]);
@@ -122,6 +134,16 @@ export default function JudgingCriteriaPage() {
           animatedValues,
           {
             point4: 100,
+            duration: 1.5,
+            ease: "power2.out",
+            onUpdate: updateChart,
+          },
+          "+=0.5",
+        )
+        .to(
+          animatedValues,
+          {
+            point5: 100,
             duration: 1.5,
             ease: "power2.out",
             onUpdate: updateChart,
@@ -228,7 +250,7 @@ export default function JudgingCriteriaPage() {
                 >
                   <div className="bg-[#5fb8dc]/10 border border-[#165a94] rounded-lg p-6 backdrop-blur-md shadow-2xl">
                     <h3 className="text-lg font-bold text-[#165a94] mb-4 flex items-center gap-3 leading-tight">
-                      <span className="text-xl text-[#104069] flex-shrink-0">
+                      <span className="text-xl text-[#104069] shrink-0">
                         {index + 1}.
                       </span>
                       <span>{criterion.subject}</span>
@@ -250,7 +272,7 @@ export default function JudgingCriteriaPage() {
               {[0.25, 0.5, 0.75, 1].map((scale) => (
                 <polygon
                   key={scale}
-                  points="200,50 350,200 200,350 50,200"
+                  points="200,50 342.7,153.6 288.2,321.4 111.8,321.4 57.3,153.6"
                   fill="none"
                   stroke="#165a94"
                   strokeWidth="1"
@@ -272,24 +294,32 @@ export default function JudgingCriteriaPage() {
               <line
                 x1="200"
                 y1="200"
-                x2="350"
-                y2="200"
+                x2="342.7"
+                y2="153.6"
                 stroke="#165a94"
                 strokeWidth="1"
               />
               <line
                 x1="200"
                 y1="200"
-                x2="200"
-                y2="350"
+                x2="288.2"
+                y2="321.4"
                 stroke="#165a94"
                 strokeWidth="1"
               />
               <line
                 x1="200"
                 y1="200"
-                x2="50"
-                y2="200"
+                x2="111.8"
+                y2="321.4"
+                stroke="#165a94"
+                strokeWidth="1"
+              />
+              <line
+                x1="200"
+                y1="200"
+                x2="57.3"
+                y2="153.6"
                 stroke="#165a94"
                 strokeWidth="1"
               />
@@ -297,10 +327,11 @@ export default function JudgingCriteriaPage() {
               {/* Data Polygon */}
               <polygon
                 points={`
-                  200,${200 - chartData[0].value * 1.5}
-                  ${200 + chartData[1].value * 1.5},200
-                  200,${200 + chartData[2].value * 1.5}
-                  ${200 - chartData[3].value * 1.5},200
+                  200,${200 - (chartData[0].value / 100) * 150}
+                  ${200 + (chartData[1].value / 100) * 142.7},${200 - (chartData[1].value / 100) * 46.4}
+                  ${200 + (chartData[2].value / 100) * 88.2},${200 + (chartData[2].value / 100) * 121.4}
+                  ${200 - (chartData[3].value / 100) * 88.2},${200 + (chartData[3].value / 100) * 121.4}
+                  ${200 - (chartData[4].value / 100) * 142.7},${200 - (chartData[4].value / 100) * 46.4}
                 `}
                 fill="#165a94"
                 fillOpacity="0.6"
@@ -313,23 +344,28 @@ export default function JudgingCriteriaPage() {
               {[
                 {
                   x: 200,
-                  y: 200 - chartData[0].value * 1.5,
+                  y: 200 - (chartData[0].value / 100) * 150,
                   visible: chartData[0].value > 0,
                 },
                 {
-                  x: 200 + chartData[1].value * 1.5,
-                  y: 200,
+                  x: 200 + (chartData[1].value / 100) * 142.7,
+                  y: 200 - (chartData[1].value / 100) * 46.4,
                   visible: chartData[1].value > 0,
                 },
                 {
-                  x: 200,
-                  y: 200 + chartData[2].value * 1.5,
+                  x: 200 + (chartData[2].value / 100) * 88.2,
+                  y: 200 + (chartData[2].value / 100) * 121.4,
                   visible: chartData[2].value > 0,
                 },
                 {
-                  x: 200 - chartData[3].value * 1.5,
-                  y: 200,
+                  x: 200 - (chartData[3].value / 100) * 88.2,
+                  y: 200 + (chartData[3].value / 100) * 121.4,
                   visible: chartData[3].value > 0,
+                },
+                {
+                  x: 200 - (chartData[4].value / 100) * 142.7,
+                  y: 200 - (chartData[4].value / 100) * 46.4,
+                  visible: chartData[4].value > 0,
                 },
               ].map((point, index) => (
                 <circle
@@ -355,13 +391,16 @@ export default function JudgingCriteriaPage() {
                     position: "top-[2%] left-1/2 -translate-x-1/2",
                   },
                   {
-                    position: "top-1/2 right-[2%] -translate-y-1/2",
+                    position: "top-[15%] right-[5%]",
                   },
                   {
-                    position: "bottom-[2%] left-1/2 -translate-x-1/2",
+                    position: "bottom-[5%] right-[15%]",
                   },
                   {
-                    position: "top-1/2 left-[2%] -translate-y-1/2",
+                    position: "bottom-[5%] left-[15%]",
+                  },
+                  {
+                    position: "top-[15%] left-[5%]",
                   },
                 ];
 
@@ -374,7 +413,7 @@ export default function JudgingCriteriaPage() {
                   >
                     <div className="bg-[#5fb8dc]/10 border border-[#165a94] rounded-lg p-5 backdrop-blur-md shadow-2xl pointer-events-auto">
                       <h3 className="text-base font-bold text-[#165a94] mb-3 flex items-center gap-2 leading-tight">
-                        <span className="text-lg text-[#104069] flex-shrink-0">
+                        <span className="text-lg text-[#104069] shrink-0">
                           {index + 1}.
                         </span>
                         <span>{criterion.subject}</span>
