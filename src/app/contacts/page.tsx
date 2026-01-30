@@ -44,6 +44,17 @@ const CONTACTS = [
   },
 ];
 
+const EMAILS = [
+  {
+    label: "Support",
+    email: "support@smartabeshackathon.tech",
+  },
+  {
+    label: "Organizer",
+    email: "organizer@smartabeshackathon.tech",
+  },
+];
+
 export default function ContactsPage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -83,6 +94,26 @@ export default function ContactsPage() {
             scale: 0.8,
             duration: 0.5,
             stagger: 0.1,
+          },
+          "-=0.3",
+        )
+        // Animate email section
+        .from(
+          ".email-section-title",
+          {
+            opacity: 0,
+            x: -30,
+            duration: 0.6,
+          },
+          "-=0.2",
+        )
+        .from(
+          ".email-card",
+          {
+            opacity: 0,
+            y: 20,
+            duration: 0.5,
+            stagger: 0.15,
           },
           "-=0.3",
         )
@@ -216,6 +247,31 @@ export default function ContactsPage() {
                     </p>
                   </div>
                 </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Email Contacts Section */}
+          <div className="mb-16">
+            <h2 className="email-section-title text-2xl md:text-3xl font-bold text-[#165a94] mb-8 font-mono text-center">
+              Email Contacts
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              {EMAILS.map((email, index) => (
+                <div
+                  key={index}
+                  className="email-card bg-[#3791c4]/30 backdrop-blur-sm border-2 border-[#165a94] p-6 rounded-lg text-center"
+                >
+                  <h3 className="text-xl font-bold text-white mb-3 font-mono">
+                    {email.label}
+                  </h3>
+                  <a
+                    href={`mailto:${email.email}`}
+                    className="text-white/90 font-mono text-base hover:text-white transition-colors inline-block break-all"
+                  >
+                    {email.email}
+                  </a>
+                </div>
               ))}
             </div>
           </div>
