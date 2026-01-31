@@ -36,6 +36,12 @@ const judges: Judge[] = [
     title: "Commudle",
     image: "/judges/no image.png",
   },
+  {
+    id: "5",
+    name: "Mr. Chaitanya Bajpai",
+    title: "",
+    image: "/judges/Chaitanya Bajpai.jpeg",
+  },
 ];
 
 export default function JudgesPage() {
