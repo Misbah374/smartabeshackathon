@@ -3,6 +3,7 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import Image from "next/image";
 
 interface Judge {
   id: string;
@@ -21,7 +22,7 @@ const judges: Judge[] = [
   {
     id: "2",
     name: "Mr. Anand Thakur",
-    title: "CEO of Technological Edusearch",
+    title: "CEO of Technoledge Edusearch",
     image: "/judges/Anand Thakur.jpeg",
   },
   {
@@ -30,16 +31,16 @@ const judges: Judge[] = [
     title: "Section Officer, Delhi Water Board",
     image: "/judges/water board.jpeg",
   },
+  // {
+  //   id: "4",
+  //   name: "Mr. Arpan Garg",
+  //   title: "Commudle",
+  //   image: "/judges/no image.png",
+  // },
   {
     id: "4",
-    name: "Mr. Arpan Garg",
-    title: "Commudle",
-    image: "/judges/no image.png",
-  },
-  {
-    id: "5",
     name: "Mr. Chaitanya Bajpai",
-    title: "",
+    title: "Exo Tech",
     image: "/judges/Chaitanya Bajpai.jpeg",
   },
 ];
@@ -51,7 +52,6 @@ export default function JudgesPage() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
-      
       tl.from(".faq-title", {
         opacity: 0,
         y: -30,
@@ -65,7 +65,7 @@ export default function JudgesPage() {
           },
           "-=0.5",
         )
-        
+
         .from(
           ".faq-item",
           {
@@ -155,38 +155,40 @@ export default function JudgesPage() {
           {/* Title */}
           <div className="text-center mb-16">
             <h1 className="faq-title text-5xl md:text-7xl font-bold text-[#165a94] mb-4 tracking-tight font-mono">
-                Judges
+              Judges
             </h1>
             <div className="faq-divider h-1 w-32 bg-[#165a94] mx-auto"></div>
           </div>
 
           {/* Judges Layout */}
           {/* Mobile: Grid View */}
-          <div className="block md:hidden grid grid-cols-1 gap-8">
+          <div className="md:hidden grid grid-cols-1 gap-8">
             {judges.map((judge) => (
               <div key={judge.id} className="faq-item">
                 <div className="bg-white/5 backdrop-blur-sm border-2 border-[#165a94] hover:border-[#5fb8dc] transition-all duration-300 p-8 h-full group hover:bg-white/10 relative flex flex-col items-center justify-start">
                   {/* Image */}
-                  <div className="w-40 h-40 mb-6 overflow-hidden rounded-full border-4 border-[#5fb8dc]/30 group-hover:scale-105 transition-transform duration-300 flex-shrink-0">
-                    <img 
-                      src={judge.image} 
+                  <div className="w-40 h-40 mb-6 overflow-hidden rounded-full border-4 border-[#5fb8dc]/30 group-hover:scale-105 transition-transform duration-300 shrink-0">
+                    <Image
+                      src={judge.image}
                       alt={judge.name}
+                      width={160}
+                      height={160}
                       className="w-full h-full object-cover object-center"
                     />
                   </div>
-                  
+
                   {/* Name */}
                   <h3 className="text-2xl font-bold text-white text-center mb-4 font-mono w-full">
                     {judge.name}
                   </h3>
-                  
+
                   {/* Title/Position */}
                   <div className="border-t-2 border-[#165a94]/50 pt-4 w-full">
                     <p className="text-white/80 text-center font-mono text-base leading-relaxed">
                       {judge.title}
                     </p>
                   </div>
-                  
+
                   {/* Decorative Corner */}
                   <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[#165a94]/20 pointer-events-none"></div>
                 </div>
@@ -196,43 +198,53 @@ export default function JudgesPage() {
 
           {/* Desktop: Timeline View with Alternating Sides */}
           <div className="hidden md:block space-y-16">
-            {judges.map((judge, index) => {
+            {judges.map((judge) => {
               const isOdd = parseInt(judge.id) % 2 !== 0;
-              
+
               return (
-                <div key={judge.id} className="faq-item relative">
+                <div key={judge.id} className="relative">
                   {/* Wrapper with border around entire judge */}
-                  <div className="bg-white/5 backdrop-blur-sm border-4 border-[#165a94] p-6 lg:p-8 relative hover:border-[#5fb8dc] transition-all duration-300">
-                    <div className={`flex items-center gap-8 ${isOdd ? 'flex-row' : 'flex-row-reverse'}`}>
+                  <div className="bg-white/5 backdrop-blur-sm p-6 lg:p-8 relative transition-all duration-300">
+                    <div
+                      className={`flex items-center gap-8 ${isOdd ? "flex-row" : "flex-row-reverse"}`}
+                    >
                       {/* Image */}
-                      <div className="flex-shrink-0">
+                      <div className="shrink-0">
                         <div className="w-56 h-56 lg:w-64 lg:h-64 overflow-hidden rounded-full border-4 border-[#5fb8dc]/50 hover:scale-105 transition-transform duration-300">
-                          <img 
-                            src={judge.image} 
+                          <Image
+                            src={judge.image}
                             alt={judge.name}
+                            width={256}
+                            height={256}
                             className="w-full h-full object-cover object-center"
                           />
                         </div>
                       </div>
-                      
+
                       {/* Content Card */}
                       <div className="flex-1">
                         <div className="p-8 lg:p-10 relative">
                           {/* Name */}
-                          <h3 className={`text-3xl lg:text-6xl font-bold text-white mb-4 font-mono ${isOdd ? 'text-left' : 'text-right'}`}>
+                          <h3
+                            className={`text-3xl lg:text-6xl font-bold text-white mb-4 font-mono ${isOdd ? "text-left" : "text-right"}`}
+                          >
                             {judge.name}
                           </h3>
-                          
+
                           {/* Title/Position */}
-                          <div className={`border-t-2 border-[#165a94]/50 pt-4 ${isOdd ? 'border-l-4 pl-4' : 'border-r-4 pr-4'}`}>
-                            <p className={`text-white/80 font-mono text-lg lg:text-xl leading-relaxed ${isOdd ? 'text-left' : 'text-right'}`}>
+                          <div
+                            className={`border-t-2 border-[#165a94]/50 pt-4 ${isOdd ? "border-l-4 pl-4" : "border-r-4 pr-4"}`}
+                          >
+                            <p
+                              className={`text-white/80 font-mono text-lg lg:text-xl leading-relaxed ${isOdd ? "text-left" : "text-right"}`}
+                            >
                               {judge.title}
                             </p>
                           </div>
                         </div>
                       </div>
                     </div>
-                    
+
                     {/* Corner accents on outer border */}
                     <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#5fb8dc]"></div>
                     <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#5fb8dc]"></div>

@@ -11,7 +11,6 @@ export default function SessionsPage() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
-      
       tl.from(".faq-title", {
         opacity: 0,
         y: -30,
@@ -25,7 +24,7 @@ export default function SessionsPage() {
           },
           "-=0.5",
         )
-        
+
         .from(
           ".faq-item",
           {
@@ -115,7 +114,7 @@ export default function SessionsPage() {
           {/* Title */}
           <div className="text-center mb-16">
             <h1 className="faq-title text-5xl md:text-7xl font-bold text-[#165a94] mb-4 tracking-tight font-mono">
-                Sessions
+              Sessions
             </h1>
             <div className="faq-divider h-1 w-32 bg-[#165a94] mx-auto"></div>
           </div>
@@ -126,25 +125,30 @@ export default function SessionsPage() {
               {/* Main Card */}
               <div className="bg-white/5 backdrop-blur-sm border-2 border-[#165a94] hover:border-[#5fb8dc] transition-all duration-300 overflow-hidden">
                 {/* Header Section */}
-                <div className="bg-gradient-to-r from-[#165a94] to-[#3791c4] p-6 relative overflow-hidden">
+                <div className="bg-linear-to-r from-[#165a94] to-[#3791c4] p-6 relative overflow-hidden">
                   {/* Background Pattern */}
                   <div className="absolute inset-0 opacity-10">
-                    <div className="absolute inset-0" style={{
-                      backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,.1) 10px, rgba(255,255,255,.1) 20px)'
-                    }}></div>
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        backgroundImage:
+                          "repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,.1) 10px, rgba(255,255,255,.1) 20px)",
+                      }}
+                    ></div>
                   </div>
-                  
+
                   <div className="relative z-10 flex items-center justify-between">
                     <div className="flex items-center gap-4">
                       <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-3xl border-2 border-white/30">
                         🎤
                       </div>
                       <div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-white font-mono tracking-tight">
-                          1st Session
-                        </h2>
-                        <p className="text-[#5fb8dc] font-mono text-sm mt-1">
-                          📅 01 February 2026
+                        <h3 className="text-2xl font-bold text-white font-mono tracking-tight">
+                          Open Source as an Engineering Classroom, Not a Resume
+                          Hack
+                        </h3>
+                        <p className="font-mono text-sm mt-1">
+                          📅 01 February 2026 9:00 PM
                         </p>
                       </div>
                     </div>
@@ -153,41 +157,34 @@ export default function SessionsPage() {
 
                 {/* Content Section */}
                 <div className="p-8">
-                  {/* Topic */}
-                  <div className="mb-6">
-                    <h3 className="text-2xl md:text-3xl font-bold text-white font-mono">
-                      Open Source Contributions
-                    </h3>
-                  </div>
-
                   {/* Description */}
                   <div className="mb-6">
                     <div className="border-l-4 border-[#165a94] pl-6 py-2">
                       <p className="text-white/90 text-lg leading-relaxed font-mono">
-                        Participants will learn about open source contributions and best practices. 
-                        This session covers everything from finding projects to making your first PR.
+                        Learning isn’t about padding resumes it’s about building
+                        skills that last.
+                        <br />
+                        <br />
+                        Akshit Batra sir is coming on behalf of Building For Fun
+                        with a powerful session on “Open Source as an
+                        Engineering Classroom, Not a Resume Hack” Real talk.
+                        <br />
+                        <br />
+                        Real engineering. Real impact.
                       </p>
                     </div>
                   </div>
 
                   {/* Speaker Section */}
                   <div className="bg-[#165a94]/20 border-2 border-[#165a94]/50 p-6">
-                    <p className="text-white/70 font-mono text-xs mb-2 tracking-wider">SPEAKER</p>
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-[#3791c4] rounded-full flex items-center justify-center text-white font-bold text-xl font-mono">
-                        AB
-                      </div>
-                      <div>
-                        <p className="text-white font-mono text-xl font-bold">Mr. Akshit Batra</p>
-                        <p className="text-[#5fb8dc] font-mono text-sm">Industry Expert</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Info Tags */}
-                  <div className="mt-6 flex flex-wrap gap-3">
-                    <div className="bg-[#3791c4]/20 border border-[#3791c4]/50 px-4 py-2">
-                      <span className="text-white/80 font-mono text-sm">🎓 Learning Session</span>
+                    <p className="text-white/70 font-mono text-xs mb-2 tracking-wider">
+                      SPEAKER
+                    </p>
+                    <div>
+                      <p className="text-white font-mono text-xl font-bold">
+                        Mr. Akshit Batra
+                      </p>
+                      <p className="font-mono text-sm">Industry Expert</p>
                     </div>
                   </div>
 
