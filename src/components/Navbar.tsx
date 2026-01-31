@@ -14,6 +14,8 @@ export default function Navbar() {
     { href: "/about", label: "About" },
     { href: "/problem-statements", label: "Problem Statements" },
     { href: "/timeline", label: "Timeline" },
+    { href: "/judges", label: "Judges" },
+    { href: "/sessions", label: "Sessions" },
     { href: "/judging-criteria", label: "Judging Criteria" },
     { href: "/faq", label: "FAQ" },
     { href: "/contacts", label: "Contacts" },

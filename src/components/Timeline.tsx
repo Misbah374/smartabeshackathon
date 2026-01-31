@@ -32,6 +32,17 @@ const timelineEvents: TimelineEvent[] = [
     supportingText: "No full implementation required at this stage",
   },
   {
+    id: "speaker-session",
+    date: "Feb 1, 2026",
+    title: "Sessions: To boost the learning process",
+    description:[
+      "• Session 1: Participants will learn about open source contributions by Mr. Akshit Batra.",
+    ],
+    icon: "🎤",
+    type: "minor",
+    supportingText: "Learning session · Non-evaluative",
+  },
+  {
     id: "mystery-1",
     date: "Throughout Round 1",
     title: "Mystery Learning Drop",
