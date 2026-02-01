@@ -33,34 +33,37 @@ const AI = () => {
           </Link>
 
           {/* PS-2 */}
-          {/*<Link href="/problem-statements/ai/ps-2">
+          <Link href="/problem-statements/ai/ps-2">
             <div className="bg-[#165a94]/10 backdrop-blur-sm border-2 border-[#165a94] p-8 rounded-lg hover:bg-[#165a94]/20 transition-all duration-300 hover:scale-105 cursor-pointer">
               <h3 className="text-xl font-semibold text-white mb-3">
-                Algorithmic Learning Path Generator from Unstructured Developer Content
+                Algorithmic Learning Path Generator from Unstructured Developer
+                Content
               </h3>
               <p className="text-white/70 text-sm">
-                Develop a system that turns unstructured developer content into 
-                optimized learning paths. Model concept dependencies algorithmically. 
-                Generate a curriculum that maximizes learning efficiency and 
-                minimizes knowledge gaps.
+                Design a system that transforms unstructured developer content
+                into optimized learning paths. Model concept dependencies
+                algorithmically and generate paths that maximize learning
+                efficiency while minimizing knowledge gaps.
               </p>
             </div>
-          </Link>*/}
+          </Link>
 
           {/* PS-3 */}
-          {/*<Link href="/problem-statements/ai/ps-3">
+          <Link href="/problem-statements/ai/ps-3">
             <div className="bg-[#165a94]/10 backdrop-blur-sm border-2 border-[#165a94] p-8 rounded-lg hover:bg-[#165a94]/20 transition-all duration-300 hover:scale-105 cursor-pointer">
               <h3 className="text-xl font-semibold text-white mb-3">
-                Gamified Concept Mastery Engine for Learning Complex Technical Topics
+                Gamified Concept Mastery Engine for Learning Complex Technical
+                Topics
               </h3>
               <p className="text-white/70 text-sm">
-                Build an engine that turns complex technical fields like Distributed 
-                Systems or Cryptography into engaging, game-like mastery. It replaces 
-                lectures and competition with algorithmic state machines and adaptive 
-                feedback to build deep intuition through play.
+                Build a learning game engine that transforms complex topics like
+                Distributed Systems or Cryptography into engaging, playful
+                experiences. Use algorithmic state machines and adaptive
+                difficulty to build deep intuition through interactive play, not
+                competition.
               </p>
             </div>
-          </Link>*/}
+          </Link>
 
           {/* Add more problem statements here */}
         </div>
