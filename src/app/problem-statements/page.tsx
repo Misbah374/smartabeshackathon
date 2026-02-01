@@ -161,6 +161,18 @@ export default function ProblemStatementsPage() {
               </div>
             </Link>
 
+            {/* Web3 Category */}
+            <Link href="/problem-statements/web3" className="ps-card block">
+              <div className="bg-[#165a94]/10 backdrop-blur-sm border-2 border-[#165a94] p-8 rounded-lg hover:bg-[#165a94]/20 transition-all duration-300 hover:scale-105 cursor-pointer">
+                <h2 className="text-2xl font-bold text-[#165a94] mb-4 font-mono">
+                  Web3
+                </h2>
+                <p className="text-white/80">
+                  Decentralized applications, blockchain, and smart contracts
+                </p>
+              </div>
+            </Link>
+
             {/* Additional categories can be added here */}
           </div>
         </div>
