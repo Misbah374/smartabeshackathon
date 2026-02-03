@@ -15,7 +15,7 @@ interface Judge {
 const judges: Judge[] = [
   {
     id: "1",
-    name: "Akshit Batra",
+    name: "Mr. Akshit Batra",
     title: "Building for fun",
     image: "/judges/Akshit Batra.jpeg",
   },
