@@ -65,6 +65,18 @@ const AI = () => {
             </div>
           </Link>
 
+          {/* PS-4 */}
+          <Link href="/problem-statements/ai/ps-4">
+            <div className="bg-[#165a94]/10 backdrop-blur-sm border-2 border-[#165a94] p-8 rounded-lg hover:bg-[#165a94]/20 transition-all duration-300 hover:scale-105 cursor-pointer">
+              <h3 className="text-xl font-semibold text-white mb-3">
+                AI‑Driven Interview Video Processing for Behavioral Trait Extraction
+              </h3>
+              <p className="text-white/70 text-sm">
+                
+              </p>
+            </div>
+          </Link>
+
           {/* Add more problem statements here */}
         </div>
       </div>

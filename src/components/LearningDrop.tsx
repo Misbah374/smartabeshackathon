@@ -41,11 +41,29 @@ const sessions: Session[] = [
     },
     icon: "🎤",
     organization: "Building For Fun",
-    link: "/sessions/session-1",
+    link: "/learning-hub/session-1",
+  },
+  {
+    id: "panel-discussion",
+    title: "Panel Discussion: Navigating the Future of Tech",
+    date: "08 February 2026",
+    time: " ",
+    description: [
+      "Join industry leaders as they discuss emerging trends, challenges, and opportunities in technology.",
+      "Gain insights into the skills and mindsets needed to thrive in the ever-evolving tech landscape.",
+      "Don't miss this chance to hear from the experts shaping the future of technology.",
+    ],
+    speaker: {
+      name: "Industry Experts Panel",
+      designation: "Various Experts",
+    },
+    icon: "🎤",
+    organization: "Various Leading Tech Companies",
+    link: "/learning-hub/panel-discussion",
   },
 ];
 
-export default function Sessions() {
+export default function LearningDrop() {
   const containerRef = useRef<HTMLDivElement>(null);
   const sessionsRef = useRef<(HTMLDivElement | null)[]>([]);
 

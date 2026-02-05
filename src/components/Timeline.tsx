@@ -34,7 +34,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     id: "speaker-session",
     date: "Feb 1, 2026",
-    title: "Sessions: To boost the learning process",
+    title: "Learning Drop: To boost the learning process",
     description:[
       "• Session 1: Participants will learn about open source contributions by Mr. Akshit Batra.",
     ],
@@ -44,8 +44,8 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     id: "mystery-1",
-    date: "Throughout Round 1",
-    title: "Mystery Learning Drop",
+    date: "Feb 8, 2026",
+    title: "Panel Discussion",
     description: [
       "Industry experts will host sessions focused on:",
       "• Practical algorithm usage",
@@ -53,7 +53,7 @@ const timelineEvents: TimelineEvent[] = [
       "• Real-world engineering thinking",
     ],
     icon: "🎓",
-    type: "mystery",
+    type: "minor",
     supportingText: "Supportive · Non-evaluative · Learning-focused",
   },
   {

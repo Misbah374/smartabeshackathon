@@ -31,17 +31,23 @@ const judges: Judge[] = [
     title: "Section Officer, Delhi Water Board",
     image: "/judges/water board.jpeg",
   },
-  // {
-  //   id: "4",
-  //   name: "Mr. Arpan Garg",
-  //   title: "Commudle",
-  //   image: "/judges/no image.png",
-  // },
   {
-    id: "4",
+     id: "4",
+     name: "Mr. Arpan Garg",
+     title: "Founder of Commudle",
+     image: "/judges/Arpan Garg.jpeg",
+  },
+  {
+    id: "5",
     name: "Mr. Chaitanya Bajpai",
     title: "Exo Tech",
     image: "/judges/Chaitanya Bajpai.jpeg",
+  },
+  {
+    id: "6",
+    name: "Mr. Naman Kaley",
+    title: "Docker Captain, Lead Engineer",
+    image: "/judges/Naman Kaley.jpeg",
   },
 ];
 

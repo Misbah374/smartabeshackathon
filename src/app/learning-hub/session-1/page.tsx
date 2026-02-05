@@ -44,7 +44,7 @@ export default function Session1Page() {
         {/* Header Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 text-[#165a94] font-mono tracking-tight">
-            Session 1: Open Source as an Engineering Classroom, Not a Resume Hack
+            Learning Drop 1: Open Source as an Engineering Classroom, Not a Resume Hack
           </h1>
           <div className="w-32 h-0.5 bg-[#165a94] mx-auto mb-6"></div>
           <div className="flex justify-center items-center gap-8 text-white/80 font-mono">
@@ -78,10 +78,10 @@ export default function Session1Page() {
 
         {/* Content Section */}
         <div className="max-w-4xl mx-auto space-y-8">
-          {/* Session Overview */}
+          {/* Learning Hub Overview */}
           <section className="bg-white/5 backdrop-blur-sm border-2 border-[#165a94] p-8">
             <h2 className="text-2xl font-bold text-[#165a94] font-mono mb-4 border-b-2 border-[#165a94]/30 pb-2">
-                Session Overview
+                Learning Hub Overview
             </h2>
             <div className="text-white/90 font-mono space-y-4">
               {/* Add your content here */}
@@ -158,10 +158,10 @@ export default function Session1Page() {
           {/* Back Button */}
           <div className="text-center py-8">
             <a
-              href="/sessions"
+              href="/learning-hub"
               className="inline-block bg-[#165a94] hover:bg-[#3791c4] text-white font-mono px-8 py-3 border-2 border-[#165a94] hover:border-[#5fb8dc] transition-all duration-300"
             >
-              ← Back to Sessions
+              ← Back to Learning Hub
             </a>
           </div>
         </div>

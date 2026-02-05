@@ -15,7 +15,7 @@ export default function Navbar() {
     { href: "/problem-statements", label: "Problem Statements" },
     { href: "/timeline", label: "Timeline" },
     { href: "/judges", label: "Judges" },
-    { href: "/sessions", label: "Sessions" },
+    { href: "/learning-hub", label: "Learning Hub" },
     { href: "/judging-criteria", label: "Judging Criteria" },
     { href: "/faq", label: "FAQ" },
     { href: "/contacts", label: "Contacts" },

@@ -1,8 +1,8 @@
 /** @format */
 
-import Sessions from "@/components/Sessions";
+import LearningDrop from "@/components/LearningDrop";
 
-export default function SessionsPage() {
+export default function LearningDropPage() {
   return (
     <main className="min-h-screen w-full overflow-hidden">
       {/* SVG Drawing Layer */}
@@ -57,14 +57,14 @@ export default function SessionsPage() {
       <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
         <div className="text-center mb-16 md:mb-24">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 text-[#165a94] font-mono tracking-tight">
-            SESSIONS
+            LEARNING HUB
           </h1>
           <div className="w-32 h-0.5 bg-[#165a94] mx-auto mb-6"></div>
           <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto font-mono">
             Expert sessions to enhance your learning journey
           </p>
         </div>
-        <Sessions />
+        <LearningDrop />
       </div>
     </main>
   );
